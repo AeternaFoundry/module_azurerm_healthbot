@@ -20,22 +20,6 @@ EOT
   validation {
     condition = alltrue([
       for k, v in var.healthbots : (
-        length(v.name) >= 2
-      )
-    ])
-    error_message = "[from validate.HealthbotName: invalid when len(value) < 2]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.healthbots : (
-        length(v.name) <= 64
-      )
-    ])
-    error_message = "[from validate.HealthbotName: invalid when len(value) > 64]"
-  }
-  validation {
-    condition = alltrue([
-      for k, v in var.healthbots : (
         length(v.resource_group_name) <= 90
       )
     ])
@@ -65,6 +49,6 @@ EOT
     ])
     error_message = "[from tags.Validate: invalid when len(value) > 50]"
   }
-  # Note: 8 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
+  # Note: 7 additional provider-side validators are enforced at apply time but not mirrored as validation{} blocks here (bespoke or non-mechanically-translatable).
 }
 
